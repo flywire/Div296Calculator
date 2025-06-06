@@ -7,10 +7,10 @@ test('Example 1.1: Keny', () => {
 
 test('Example 1.2: Jess', () => {
   const r = div296Calc({ tsb_start: 4000000, tsb_end: 4500000, after_tax_contrib: 23375, withdrawals: 0 });
-  expect(r.earnings).toBe(477000);
+  expect(r.earnings).toBe(476625);
   expect(r.proportion_percent).toBeCloseTo(33.33, 2);
-  expect(r.taxable_earnings).toBe(158999);
-  expect(r.div296_tax).toBe(23850);
+  expect(r.taxable_earnings).toBe(158859);
+  expect(r.div296_tax).toBe(23829);
   expect(r.comment).toBe("");
 });
 
