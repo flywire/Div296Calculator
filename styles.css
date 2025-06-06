@@ -40,18 +40,6 @@ input[type="text"] {
   border: 1px solid #ccc;
   border-radius: 3px;
 }
-.button-row-outer {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin: 32px 0 24px 0;
-}
-.button-row-inner {
-  width: 100%;
-  max-width: 500px;
-  display: flex;
-  justify-content: center;
-}
 .calc-btn {
   font-size: 1em;
   padding: 12px 32px;
@@ -63,6 +51,9 @@ input[type="text"] {
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
+  margin-top: 18px;
+  margin-bottom: 18px;
+  margin-left: 0;
 }
 .calc-btn:hover, .calc-btn:focus {
   background: #0078D7;

@@ -21,17 +21,17 @@ function calculateDiv296Tax() {
   const after_tax_contrib = parseInput('after_tax_contrib');
   const withdrawals = parseInput('withdrawals');
 
-  let earnings = null, proportion_percent = null, taxable_earnings = null, div296_tax = null, comment = "";
+  let earnings = null, proportion_percent = null, taxable_earnings = null, div296_tax = null, taxable = "";
 
   // Rule 1: No Division 296 tax if TSB at end of year is $3M or less
   if (tsb_end <= 3000000) {
-    comment = "No Division 296 tax applies (TSB End ≤ $3m)";
+    taxable = "No, Total Super Balance ≤ $3M";
     showOutput({
+      taxable: taxable,
       earnings: "—",
       proportion_percent: "—",
       taxable_earnings: "—",
-      div296_tax: "—",
-      comment: comment
+      div296_tax: "—"
     });
     return;
   }
@@ -42,13 +42,13 @@ function calculateDiv296Tax() {
 
   // Rule 2: No Division 296 tax if earnings are zero or negative
   if (earnings <= 0) {
-    comment = "No Division 296 taxable earnings";
+    taxable = "No Division 296 taxable earnings";
     showOutput({
+      taxable: taxable,
       earnings: formatAmount(earnings),
       proportion_percent: "—",
       taxable_earnings: "—",
-      div296_tax: "—",
-      comment: comment
+      div296_tax: "—"
     });
     return;
   }
@@ -63,24 +63,31 @@ function calculateDiv296Tax() {
   // Step 4: Calculate Division 296 Tax (15%), rounded to nearest dollar
   div296_tax = Math.round(taxable_earnings * 0.15);
 
+  taxable = "Yes";
+
   showOutput({
+    taxable: taxable,
     earnings: formatAmount(earnings),
     proportion_percent: proportion_percent.toFixed(2) + "%",
     taxable_earnings: formatAmount(taxable_earnings),
-    div296_tax: formatAmount(div296_tax),
-    comment: ""
+    div296_tax: formatAmount(div296_tax)
   });
 }
 
 function showOutput(data) {
   document.getElementById('result').innerHTML = `
     <div class="grid-table">
+      ${data.taxable ? `
+      <div class="grid-row">
+        <div class="grid-label">Taxable</div>
+        <div class="grid-value">${data.taxable}</div>
+      </div>` : ""}
       <div class="grid-row">
         <div class="grid-label">Earnings</div>
         <div class="grid-value">${data.earnings}</div>
       </div>
       <div class="grid-row">
-        <div class="grid-label">Proportion (%)</div>
+        <div class="grid-label">Taxable Proportion (%)</div>
         <div class="grid-value">${data.proportion_percent}</div>
       </div>
       <div class="grid-row">
@@ -91,11 +98,6 @@ function showOutput(data) {
         <div class="grid-label">Div 296 Tax</div>
         <div class="grid-value">${data.div296_tax}</div>
       </div>
-      ${data.comment ? `
-      <div class="grid-row">
-        <div class="grid-label">Comment</div>
-        <div class="grid-value">${data.comment}</div>
-      </div>` : ""}
     </div>
   `;
 }
