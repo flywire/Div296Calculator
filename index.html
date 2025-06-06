@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Division 296 Tax Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h2>Division 296 Tax Calculator</h2>
+  <form id="input-form" onsubmit="calculateDiv296Tax(); return false;">
+    <div class="grid-table">
+      <div class="grid-row">
+        <div class="grid-label">TSB Start</div>
+        <div class="grid-value">
+          <input type="text" id="tsb_start" inputmode="numeric" autocomplete="off" oninput="formatInput(this)">
+        </div>
+      </div>
+      <div class="grid-row">
+        <div class="grid-label">TSB End</div>
+        <div class="grid-value">
+          <input type="text" id="tsb_end" inputmode="numeric" autocomplete="off" oninput="formatInput(this)">
+        </div>
+      </div>
+      <div class="grid-row">
+        <div class="grid-label">After-tax Contributions</div>
+        <div class="grid-value">
+          <input type="text" id="after_tax_contrib" inputmode="numeric" autocomplete="off" value="0" oninput="formatInput(this)">
+        </div>
+      </div>
+      <div class="grid-row">
+        <div class="grid-label">Withdrawals</div>
+        <div class="grid-value">
+          <input type="text" id="withdrawals" inputmode="numeric" autocomplete="off" value="0" oninput="formatInput(this)">
+        </div>
+      </div>
+    </div>
+    <div class="button-row-outer">
+      <div class="button-row-inner">
+        <button type="submit" class="calc-btn">Calculate</button>
+      </div>
+    </div>
+  </form>
+  <div id="result"></div>
+  <script src="script.js"></script>
+</body>
+</html>
