@@ -1,0 +1,12 @@
+{
+  "name": "div296-tax-calculator",
+  "version": "1.0.0",
+  "description": "Division 296 Tax Calculator with automated tests",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
