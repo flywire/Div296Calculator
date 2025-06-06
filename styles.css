@@ -59,3 +59,10 @@ input[type="text"] {
   background: #0078D7;
   color: #fff;
 }
+
+@media (max-width: 600px) {
+  body {
+    margin: 10px;
+    font-size: 1.1em;
+  }
+}
