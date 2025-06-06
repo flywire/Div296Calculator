@@ -2,7 +2,7 @@ const { div296Calc } = require('./calc');
 
 test('Example 1.1: Keny', () => {
   const r = div296Calc({ tsb_start: 150000, tsb_end: 165000, after_tax_contrib: 0, withdrawals: 0 });
-  expect(r.taxable).toMatch(/No, Total Super Balance ≤ $3m/);
+  expect(r.taxable).toMatch(/No, Total Super Balance ≤ \$3m/);
 });
 
 test('Example 1.2: Jess', () => {
@@ -35,12 +35,12 @@ test('Example 1.4: MG', () => {
 test('Example 1.5: Lin', () => {
   const r = div296Calc({ tsb_start: 2800000, tsb_end: 3200000, after_tax_contrib: 300000, withdrawals: 0 });
   expect(r.earnings).toBe(-100000);
-  expect(r.taxable).toMatch(/No, Total Super Balance ≤ $3m/);
+  expect(r.taxable).toMatch(/No, Total Super Balance ≤ \$3m/);
 });
 
 test('Example 1.6: Jamal', () => {
   const r = div296Calc({ tsb_start: 3200000, tsb_end: 2800000, after_tax_contrib: 0, withdrawals: 0 });
-  expect(r.taxable).toMatch(/No, Total Super Balance ≤ $3m/);
+  expect(r.taxable).toMatch(/No, Total Super Balance ≤ \$3m/);
 });
 
 test('Example 1.7: Jacob', () => {
